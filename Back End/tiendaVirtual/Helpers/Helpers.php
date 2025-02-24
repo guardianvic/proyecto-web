@@ -28,11 +28,16 @@
 		$format = print_r('</pre>');
 		return $format;
 	}
-    function getModal(string $nameModal, $data)
+   function getModal(string $nameModal, $data)
     {
-        $view_modal = "Views/Template/Modals/{$nameModal}.php";
+    $view_modal = __DIR__ . "/../Views/Template/Modals/{$nameModal}.php";
+    if (file_exists($view_modal)) {
         require_once $view_modal;        
+    } else {
+        echo "Error: Modal file not found at $view_modal";
     }
+    }
+
 	 //Elimina exceso de espacios entre palabras
 	 function strClean($strCadena){
      $string = preg_replace(['/\s+/','/^\s|\s$/'],[' ',''], $strCadena);
@@ -69,18 +74,19 @@
 
  //Genera una contraseña de 10 caracteres
 	function passGenerator($length = 10)
-	{
-    $pass = "";
-    $longitudPass=$length;
-    $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-    $longitudCadena=strlen($cadena);
-    for($i=1; $i<=$longitudPass; $i++)
     {
-        $pos = rand(0,$longitudCadena-1);
-        $pass .= substr($cadena,$pos,1);
+    $pass = "";
+    $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    $longitudCadena = strlen($cadena);
+
+    for ($i = 0; $i < $length; $i++) {
+        $pos = random_int(0, $longitudCadena - 1);
+        $pass .= $cadena[$pos];
     }
+
     return $pass;
-	}
+    }
+
 
 	//Genera un token
 	function token()

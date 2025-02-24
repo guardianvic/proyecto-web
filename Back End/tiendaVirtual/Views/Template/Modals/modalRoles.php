@@ -1,4 +1,4 @@
-<!-- Modal Nuevo Rol -->
+<!--Modal Nuevo Rol -->
 <div class="modal fade" id="modalFormRol" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -32,7 +32,7 @@
                     <span id="btnText">Guardar</span>
                   </button>&nbsp;&nbsp;&nbsp;
                   <a class="btn btn-danger" href="#" data-bs-dismiss="modal">
-                    <i class="bi bi-x-circle fs-6"></i>Cancelar
+                    <i class="app-menu__icon fas fa-sign-out-alt"></i>Cancelar
                   </a>
                 </div>
               </form>
@@ -43,18 +43,4 @@
   </div>
 </div>
 
-<!-- Modal Permisos -->
-<div class="modal fade modalPermisos" tabindex="-1" aria-labelledby="modalPermisosLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalPermisosLabel">Permisos Roles de Usuario</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Contenido del modal de permisos.</p>
-                
-            </div>
-        </div>
-    </div>
-</div>
+

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-12-2024 a las 02:03:32
+-- Tiempo de generación: 27-01-2025 a las 16:40:32
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE IF NOT EXISTS `categoria` (
   `idcategoria` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `portada` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `portada` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `datecreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ruta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `ruta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`idcategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
@@ -48,12 +48,12 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 DROP TABLE IF EXISTS `contacto`;
 CREATE TABLE IF NOT EXISTS `contacto` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `email` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `mensaje` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `ip` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `dispositivo` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `useragent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `nombre` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mensaje` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dispositivo` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `useragent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `datecreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `detalle_temp` (
   `productoid` bigint NOT NULL,
   `precio` decimal(11,2) NOT NULL,
   `cantidad` int NOT NULL,
-  `transaccionid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `transaccionid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `productoid` (`productoid`),
   KEY `personaid` (`personaid`)
@@ -105,7 +105,7 @@ DROP TABLE IF EXISTS `imagen`;
 CREATE TABLE IF NOT EXISTS `imagen` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `productoid` bigint NOT NULL,
-  `img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `productoid` (`productoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
@@ -119,11 +119,22 @@ CREATE TABLE IF NOT EXISTS `imagen` (
 DROP TABLE IF EXISTS `modulo`;
 CREATE TABLE IF NOT EXISTS `modulo` (
   `idmodulo` bigint NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `titulo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`idmodulo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `modulo`
+--
+
+INSERT INTO `modulo` (`idmodulo`, `titulo`, `descripcion`, `status`) VALUES
+(1, 'Dashboard', 'Dashboard', 1),
+(2, 'Usuarios', 'Usuarios del sistema', 1),
+(3, 'Clientes', 'Clientes de tienda', 1),
+(4, 'Productos', 'Todos los productos', 1),
+(5, 'Pedidos', 'Pedidos', 1);
 
 -- --------------------------------------------------------
 
@@ -134,16 +145,16 @@ CREATE TABLE IF NOT EXISTS `modulo` (
 DROP TABLE IF EXISTS `pedido`;
 CREATE TABLE IF NOT EXISTS `pedido` (
   `idpedido` bigint NOT NULL AUTO_INCREMENT,
-  `referenciacobro` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `idtransaccionpaypal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `datospaypal` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci,
+  `referenciacobro` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `idtransaccionpaypal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `datospaypal` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `personaid` bigint NOT NULL,
   `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `costo_envio` decimal(10,2) NOT NULL DEFAULT '0.00',
   `monto` decimal(11,2) NOT NULL,
   `tipopagoid` bigint NOT NULL,
-  `direccion_envio` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `status` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `direccion_envio` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idpedido`),
   KEY `personaid` (`personaid`),
   KEY `tipopagoid` (`tipopagoid`)
@@ -167,7 +178,33 @@ CREATE TABLE IF NOT EXISTS `permisos` (
   PRIMARY KEY (`idpermiso`),
   KEY `rolid` (`rolid`),
   KEY `moduloid` (`moduloid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `permisos`
+--
+
+INSERT INTO `permisos` (`idpermiso`, `rolid`, `moduloid`, `r`, `w`, `u`, `d`) VALUES
+(21, 2, 1, 1, 0, 0, 0),
+(22, 2, 2, 0, 1, 0, 0),
+(23, 2, 3, 0, 0, 1, 0),
+(24, 2, 4, 0, 0, 0, 0),
+(25, 2, 5, 0, 0, 0, 0),
+(26, 1, 1, 1, 1, 1, 1),
+(27, 1, 2, 1, 1, 1, 1),
+(28, 1, 3, 1, 1, 1, 1),
+(29, 1, 4, 0, 0, 0, 0),
+(30, 1, 5, 0, 0, 0, 0),
+(31, 3, 1, 1, 0, 0, 0),
+(32, 3, 2, 1, 1, 1, 0),
+(33, 3, 3, 1, 1, 1, 0),
+(34, 3, 4, 1, 1, 1, 0),
+(35, 3, 5, 1, 1, 1, 0),
+(36, 5, 1, 1, 1, 1, 1),
+(37, 5, 2, 1, 1, 1, 0),
+(38, 5, 3, 0, 0, 0, 0),
+(39, 5, 4, 0, 0, 0, 0),
+(40, 5, 5, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -178,22 +215,35 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 DROP TABLE IF EXISTS `persona`;
 CREATE TABLE IF NOT EXISTS `persona` (
   `idpersona` bigint NOT NULL AUTO_INCREMENT,
-  `identificacion` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `nombres` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `apellidos` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `identificacion` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nombres` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `apellidos` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono` bigint NOT NULL,
-  `email_user` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `password` varchar(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `nit` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `razonsocial` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `direccion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `email_user` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nit` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `razonsocial` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `direccion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rolid` bigint NOT NULL,
   `datecreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`idpersona`),
+  UNIQUE KEY `email_user` (`email_user`) USING BTREE,
   KEY `rolid` (`rolid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`idpersona`, `identificacion`, `nombres`, `apellidos`, `telefono`, `email_user`, `password`, `nit`, `razonsocial`, `direccion`, `token`, `rolid`, `datecreated`, `status`) VALUES
+(1, '93300598', 'Victor Alfonso', 'Rojas Larrarte', 3206431109, 'guardianrojas@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, NULL, NULL, NULL, 1, '2025-01-15 16:28:43', 1),
+(2, '65773071', 'Edith Ximena', 'Zapata Parga', 3212333232, 'ximena4783@hotmail.com', '9876dbcbea32d083e57407ff9fca669175f840123cd5ed3282f78e294887b053', NULL, NULL, NULL, NULL, 5, '2025-01-15 16:58:19', 1),
+(3, '5621354', 'Sandra Liliana', 'Zapata Parga', 325145684, 'sandra4783@hotmail.com', '639697bcdc8ea007bd5eb448cd69fc6a3f3ca0882a5389a82d9c7023f440eb34', NULL, NULL, NULL, NULL, 5, '2025-01-17 13:49:26', 0),
+(4, '521623', 'Nasty', 'Zapata Parga', 234553212, 'nasty@gmail.com', '', NULL, NULL, NULL, NULL, 4, '2025-01-24 16:17:25', 1),
+(5, '5698945', 'Oscar Javier', 'Beltran', 234553212, 'beltran@hotmail.com', '', NULL, NULL, NULL, NULL, 3, '2025-01-24 18:10:20', 1),
+(6, '45567889', 'Sandra Liliana', 'Zapata Parga', 234553212, 'sandra@hotmail.com', '', NULL, NULL, NULL, NULL, 5, '2025-01-24 18:15:03', 1);
 
 -- --------------------------------------------------------
 
@@ -204,11 +254,11 @@ CREATE TABLE IF NOT EXISTS `persona` (
 DROP TABLE IF EXISTS `post`;
 CREATE TABLE IF NOT EXISTS `post` (
   `idpost` bigint NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `contenido` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `portada` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `titulo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contenido` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `portada` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `datecreate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ruta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `ruta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`idpost`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
@@ -223,14 +273,14 @@ DROP TABLE IF EXISTS `producto`;
 CREATE TABLE IF NOT EXISTS `producto` (
   `idproducto` bigint NOT NULL AUTO_INCREMENT,
   `categoriaid` bigint NOT NULL,
-  `codigo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `codigo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `precio` decimal(11,2) NOT NULL,
   `stock` int NOT NULL,
-  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `datecreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ruta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `ruta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`idproducto`),
   KEY `categoriaid` (`categoriaid`)
@@ -246,10 +296,10 @@ DROP TABLE IF EXISTS `reembolso`;
 CREATE TABLE IF NOT EXISTS `reembolso` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `pedidoid` bigint NOT NULL,
-  `idtransaccion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `datosreembolso` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `observacion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `status` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `idtransaccion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `datosreembolso` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `observacion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `pedidoid` (`pedidoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
@@ -263,8 +313,8 @@ CREATE TABLE IF NOT EXISTS `reembolso` (
 DROP TABLE IF EXISTS `rol`;
 CREATE TABLE IF NOT EXISTS `rol` (
   `idrol` bigint NOT NULL AUTO_INCREMENT,
-  `nombrerol` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `nombrerol` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`idrol`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
@@ -275,10 +325,10 @@ CREATE TABLE IF NOT EXISTS `rol` (
 
 INSERT INTO `rol` (`idrol`, `nombrerol`, `descripcion`, `status`) VALUES
 (1, 'Administrador', 'Administrador del sistema', 1),
-(2, 'Supervisor ', 'Supervisor de tienda ', 1),
+(2, 'Supervisor', 'Supervisor de tiendas', 1),
 (3, 'Vendedor', 'Vendedor de tienda', 1),
 (4, 'Cliente', 'Cliente Frecuente', 1),
-(5, 'Gerente 1', 'Gerente de Tienda', 1);
+(5, 'Gerente', 'Gerente de Tienda', 1);
 
 -- --------------------------------------------------------
 
@@ -289,8 +339,8 @@ INSERT INTO `rol` (`idrol`, `nombrerol`, `descripcion`, `status`) VALUES
 DROP TABLE IF EXISTS `suscripciones`;
 CREATE TABLE IF NOT EXISTS `suscripciones` (
   `idsuscripcion` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
-  `email` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `nombre` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `datecreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idsuscripcion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
@@ -304,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `suscripciones` (
 DROP TABLE IF EXISTS `tipopago`;
 CREATE TABLE IF NOT EXISTS `tipopago` (
   `idtipopago` bigint NOT NULL AUTO_INCREMENT,
-  `tipopago` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `tipopago` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`idtipopago`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
