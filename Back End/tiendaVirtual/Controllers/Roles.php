@@ -4,6 +4,8 @@ class Roles extends Controllers
 {
     public function __construct()
     {
+        
+        
         parent::__construct();
     }
 
@@ -14,7 +16,8 @@ class Roles extends Controllers
             'page_id' => 3,
             'page_tag' => "Roles Usuario",
             'page_name' => "rol_usuario",
-            'page_title' => "Roles Usuario - <small>Tienda Virtual</small>"
+            'page_title' => "Roles Usuario - <small>Tienda Virtual</small>",
+            'page_functions_js' => "functions_roles.js"
         ];
 
         $this->views->getView($this, "roles", $data);
@@ -26,23 +29,40 @@ class Roles extends Controllers
         $arrData = $this->model->selectRoles();
 
         for ($i = 0; $i < count($arrData); $i++) {
-            // Cambiar estado a etiquetas con estilos
+            
             $arrData[$i]['status'] = $arrData[$i]['status'] == 1
                 ? '<span class="badge bg-success btn-sm">Activo</span>'
                 : '<span class="badge bg-danger btn-sm">Inactivo</span>';
 
             // Opciones de acción
             $arrData[$i]['options'] = '
-                <div class="text-center">
-                    <button class="btn btn-secondary btn-sm btnPermisosRol" rl="' . htmlspecialchars($arrData[$i]['idrol']) . '" title="Permisos"><i class="fas fa-key"></i></button>
-                    <button class="btn btn-success btn-sm btnEditRol" rl="' . htmlspecialchars($arrData[$i]['idrol']) . '" title="Editar"><i class="fas fa-pencil-alt" aria-hidden="true"></i></button>
-                    <button class="btn btn-danger btn-sm btnDelRol" rl="' . htmlspecialchars($arrData[$i]['idrol']) . '" title="Eliminar"><i class="far fa-trash-alt"></i></button>
-                </div>';
+            <div class="text-center">
+                <button class="btn btn-secondary btn-sm btnPermisosRol" rl="' . htmlspecialchars($arrData[$i]['idrol']) . '" title="Permisos"><i class="fas fa-key"></i></button>
+                <button class="btn btn-success btn-sm btnEditRol" rl="' . htmlspecialchars($arrData[$i]['idrol']) . '" title="Editar"><i class="fas fa-pencil-alt" aria-hidden="true"></i></button>
+                <button class="btn btn-danger btn-sm btnDelRol" rl="' . htmlspecialchars($arrData[$i]['idrol']) . '" title="Eliminar"><i class="far fa-trash-alt"></i></button>
+            </div>';
         }
 
         echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
         die();
     }
+
+   
+        public function getSelectRoles()
+        {
+            $htmlOptions = "";
+            $arrData = $this->model->selectRoles();
+            if(count($arrData) > 0 ){
+                for ($i=0; $i < count($arrData); $i++) { 
+                    if($arrData[$i]['status'] == 1 ){
+                    $htmlOptions .= '<option value="'.$arrData[$i]['idrol'].'">'.$arrData[$i]['nombrerol'].'</option>';
+                    }
+                }
+            }
+            echo $htmlOptions;
+            die();      
+        }
+
 
     // Obtener un rol específico
     public function getRol(int $idrol)
@@ -69,14 +89,12 @@ class Roles extends Controllers
         $strDescipcion = isset($_POST['txtDescripcion']) ? strClean($_POST['txtDescripcion']) : '';
         $intStatus = isset($_POST['listStatus']) ? intval($_POST['listStatus']) : 0;
 
-        // Validación básica
         if ($strRol === '' || $strDescipcion === '' || $intStatus === 0) {
-            $arrResponse = ['status' => false, 'msg' => 'Todos los campos son obligatorios.'];
-            echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            echo json_encode(['status' => false, 'msg' => 'Todos los campos son obligatorios.'], JSON_UNESCAPED_UNICODE);
             die();
         }
 
-        // Determinar si se crea o actualiza
+        // Crear o actualizar
         if ($intIdrol == 0) {
             $request_rol = $this->model->insertRol($strRol, $strDescipcion, $intStatus);
             $option = 1;
@@ -85,7 +103,7 @@ class Roles extends Controllers
             $option = 2;
         }
 
-        // Respuesta según resultado
+        // Respuesta
         if ($request_rol > 0) {
             $arrResponse = [
                 'status' => true,
@@ -108,7 +126,7 @@ class Roles extends Controllers
             $intIdrol = intval($_POST['idrol']);
             $requestDelete = $this->model->deleteRol($intIdrol);
 
-            // Respuesta según resultado
+            // Respuesta
             if ($requestDelete == 'ok') {
                 $arrResponse = ['status' => true, 'msg' => 'Se ha eliminado el Rol.'];
             } elseif ($requestDelete == 'exist') {
@@ -124,4 +142,3 @@ class Roles extends Controllers
 }
 
 ?>
-

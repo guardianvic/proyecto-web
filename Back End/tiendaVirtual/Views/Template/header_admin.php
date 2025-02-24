@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <!-- Meta Información -->
     <meta charset="utf-8">
     <meta name="description" content="Tienda Virtual">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
     <meta name="author" content="Victor Rojas">
     <meta name="theme-color" content="#009688">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Titulo -->
     <title><?= htmlspecialchars($data['page_tag'], ENT_QUOTES, 'UTF-8'); ?></title>
 
     <!-- Favicon -->
-    <link rel="icon" href="<?= media(); ?>/images/favicon.ico.png">
+    <link rel="icon" href="<?= media(); ?>/images/favicon.ico">
 
  
 
 <link rel="stylesheet" href="<?= media(); ?>/css/main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta3/css/bootstrap-select.min.css">
 <link rel="stylesheet" href="<?= media(); ?>/css/style.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 

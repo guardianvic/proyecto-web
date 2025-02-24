@@ -2,8 +2,9 @@
     headerAdmin($data); 
     getModal('modalRoles',$data);
 ?>
-<main class="app-content">
-      <div class="app-title">
+    <div id="contentAjax"></div>
+    <main class="app-content">
+          <div class="app-title">
         <div>
           <h1><i class="bi bi-table"></i> <?= $data['page_title'] ?>
             <button class="btn btn-success" type="button" onclick="openModal();" ><i class="bi bi-person-fill-add fs-4 "></i> Nuevo</button>
