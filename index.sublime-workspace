@@ -1,0 +1,386 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"id",
+				"iduser"
+			],
+			[
+				"e",
+				"empty()"
+			],
+			[
+				"session",
+				"session_start()"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"p",
+				"public"
+			],
+			[
+				"a",
+				"addEventListener"
+			],
+			[
+				"bt",
+				"btnPermisosRol"
+			],
+			[
+				"f",
+				"function"
+			],
+			[
+				"fnt",
+				"fntPermisos"
+			],
+			[
+				"int",
+				"intRolid"
+			],
+			[
+				"c",
+				"click\t.click()"
+			],
+			[
+				"av",
+				"addEventListener"
+			],
+			[
+				"btn",
+				"btnPermisosRol"
+			],
+			[
+				"lo",
+				"Logout"
+			],
+			[
+				"php",
+				"footer_admin.php"
+			],
+			[
+				"na",
+				"nav_admin.php"
+			],
+			[
+				"das",
+				"dashboard"
+			],
+			[
+				"pri",
+				"print_r()"
+			],
+			[
+				"H",
+				"Helpers.php"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/wamp64/www/tienda/Models/UsuariosModel.php",
+		"/C/wamp64/www/tiendaVirtual/Models/UsuariosModel.php",
+		"/C/wamp64/www/tiendaVirtual/Libraries/Core/Template.php",
+		"/C/wamp64/www/tiendaVirtual/Assets/js/functions_roles.js",
+		"/C/wamp64/www/tiendaVirtual/Views/Template/footer_admin.php",
+		"/C/wamp64/www/tiendaVirtual/Views/Template/nav_admin.php",
+		"/C/wamp64/www/tienda/Assets/js/functions_roles.js",
+		"/C/wamp64/www/tienda/Libraries/Core/Mysql.php",
+		"/C/wamp64/www/tienda/Assets/js/functions_usuarios.js",
+		"/C/wamp64/www/tienda/Views/Template/Modals/modalRoles.php",
+		"/C/wamp64/www/Tienda/Config/Config.php",
+		"/C/wamp641/www/Tienda/Assets/js/functions_roles.js",
+		"/C/wamp64/www/tiendaVirtual/Config/config.php",
+		"/C/xampp/apache/conf/extra/httpd-vhosts.conf",
+		"/C/wamp64/www/tiendaVirtual1/Assets/js/functions_roles.js",
+		"/C/wamp64/www/tiendaVirtual1/Controllers/Usuarios.php",
+		"/C/wamp64/www/tiendaVirtual1/Controllers/Dashboard.php",
+		"/C/wamp641/www/tiendaVirtual/Assets/js/functions_usuarios.js",
+		"/C/wamp64/www/tiendaVirtual/Views/Template/header_admin.php",
+		"/C/wamp64/www/tiendaVirtual/Assets/js/functions_usuarios.js",
+		"/C/wamp64/www/tiendaVirtual/bd_ecommerce.sql",
+		"/C/wamp64/www/tiendaVirtual/ecommerce_2024.sql",
+		"/C/wamp64/www/tiendaVirtual/Views/Home.php",
+		"/C/wamp64/www/tiendaVirtual/Controllers/Usuarios.php",
+		"/C/wamp64/www/tiendaVirtual/Assets/css/style.css",
+		"/C/wamp64/www/tiendaVirtual/Views/Template/Modals/modalRoles.php",
+		"/C/wamp64/www/tiendaVirtual/Helpers/Helpers.php",
+		"/C/wamp64/www/tiendaVirtual/Controllers/Dashboard.php",
+		"/C/wamp64/www/tiendaVirtual/Models/LoginModel.php",
+		"/C/wamp64/www/tiendaVirtual/Controllers/Login.php",
+		"/C/wamp64/www/tiendaVirtual/Views/Dashboard/dashboard.php",
+		"/C/wamp64/www/tiendaVirtual/Controllers/Logout.php",
+		"/C/wamp64/www/tiendaVirtual/Assets/js/functions_login.js",
+		"/C/wamp64/www/tiendaVirtual/Views/Template/Modals/modalPermisos.php",
+		"/C/wamp64/www/tiendaVirtual/Models/PermisosModel.php",
+		"/C/wamp64/www/tienda_virtual/Controllers/Usuarios.php",
+		"/C/wamp64/www/tiendaVirtual/Views/Login/login.php",
+		"/C/wamp64/www/tienda_virtual/Models/LoginModel.php",
+		"/C/wamp64/www/tienda_virtual/Controllers/Login.php",
+		"/C/wamp64/www/Tienda/Helpers/Helpers.php",
+		"/C/wamp64/www/tiendaVirtual/Libraries/Core/Views.php",
+		"/C/wamp64/www/tiendaVirtual/Libraries/Core/Conexion.php",
+		"/C/wamp641/www/tienda_virtual/Assets/js/functions_login.js",
+		"/C/wamp641/www/tienda_virtual/Models/LoginModel.php",
+		"/C/wamp641/www/tienda_virtual/Controllers/Login.php",
+		"/C/wamp641/www/tiendaVirtual/Controllers/Login.php",
+		"/C/wamp64/www/Tienda/Assets/js/functions_roles.js",
+		"/C/wamp64/www/Tienda/Assets/css/style.css",
+		"/C/wamp64/www/Tienda/Views/Template/footer_admin.php",
+		"/C/wamp64/www/Tienda/Views/Template/Modals/modalPermisos.php",
+		"/C/wamp64/www/Tienda/Models/PermisosModel.php",
+		"/C/wamp64/www/Tienda/Views/Template/Modals/modalRoles.php",
+		"/C/wamp64/www/Tienda/Controllers/Permisos.php",
+		"/C/Users/Usuario/AppData/Local/Temp/3fc3f17d-38b8-42c0-9b45-881d0533930c_tienda_virtual(1).zip.30c/tienda_virtual/Views/Template/Modals/modalPermisos.php",
+		"/C/wamp64/www/Tienda/Views/Usuarios/usuarios.php",
+		"/C/wamp64/www/Tienda/Controllers/Roles.php",
+		"/C/wamp64/www/tiendaVirtualWeb/Models/PermisosModel.php",
+		"/C/wamp64/www/tienda_virtual/Assets/js/functions_roles.js",
+		"/C/wamp64/www/Tienda/Views/Template/header_admin.php",
+		"/C/wamp64/www/Tienda/Views/Template/Modals/modalUsuarios.php",
+		"/C/wamp64/www/Tienda/Assets/js/functions_usuarios.js",
+		"/C/wamp64/www/Tienda/Views/Template/nav_admin.php",
+		"/C/wamp64/www/Tienda/Libraries/Core/Mysql.php",
+		"/C/wamp64/www/Tienda/Assets/images/favicon.ico.png",
+		"/C/wamp64/www/Tienda/Views/home.php",
+		"/C/wamp64/www/Tienda/Views/Roles/roles.php",
+		"/C/wamp64/www/Tienda/Assets/js/main.js",
+		"/C/wamp64/www/Tienda/Models/RolesModel.php",
+		"/C/wamp64/www/Tienda/Models/UsuariosModel.php",
+		"/C/wamp64/www/Tienda/Controllers/Usuarios.php",
+		"/C/wamp64/www/Tienda/Controllers/Home.php",
+		"/C/wamp64/www/Tienda/Controllers/Dashboard.php",
+		"/C/wamp64/www/tiendaVirtual/jusuario.js",
+		"/C/wamp64/www/tienda_virtual/Assets/js/functions_usuarios.js",
+		"/C/wamp641/lang/modules/settings_bulgarian.php",
+		"/C/wamp64/www/Tienda/.htaccess",
+		"/C/wamp64/www/Tienda/Assets/js/jquery-3.7.0.min.js",
+		"/C/wamp64/www/tiendaVirtual/Helpers/PasswordHelper.php",
+		"/C/wamp64/www/tiendaVirtual/Libraries/Core/Autoload.php",
+		"/C/wamp64/www/tiendaVirtual/Libraries/Core/Load.php",
+		"/C/wamp64/www/tiendaVirtual/Views/Template/Modals/modalUsuarios.php",
+		"/C/wamp64/www/tienda_virtual/Config/Config.php",
+		"/C/wamp64/www/tiendaVirtualWeb/Config/config.php",
+		"/C/wamp64/www/tienda_virtual/Assets/js/functions_login.js",
+		"/C/wamp64/www/tienda_virtual/Views/Login/cambiar_password.php",
+		"/C/wamp64/www/tienda_virtual/Controllers/Dashboard.php",
+		"/C/wamp64/www/tienda_virtual/Views/Login/login.php",
+		"/C/wamp64/www/tienda_virtual/Assets/images/loading.svg",
+		"/C/wamp64/www/tienda_virtual/Models/UsuariosModel.php",
+		"/C/wamp64/www/tienda_virtual/Views/Usuarios/usuarios.php",
+		"/C/wamp64/www/tienda_virtual/Views/Template/Modals/modalUsuarios.php",
+		"/C/wamp64/www/tiendaVirtual/Views/Roles/roles.php",
+		"/C/wamp64/www/tiendaVirtual/Controllers/Permisos.php",
+		"/C/wamp64/www/tiendaVirtual/Models/RolesModel.php",
+		"/C/wamp64/www/tiendaVirtualWeb/Controllers/Permisos.php",
+		"/C/wamp64/www/tiendaVirtualWeb/Views/Template/Modals/modalPermisos.php",
+		"/C/wamp64/www/tienda_virtual/Views/Template/Modals/modalRoles.php",
+		"/C/wamp64/www/tienda_virtual/Views/Template/Modals/modalPermisos.php",
+		"/C/wamp64/www/tienda_virtual/Controllers/Permisos.php",
+		"/C/wamp64/www/tienda_virtual/Models/RolesModel.php",
+		"/C/xampp/htdocs/tiendaVirtual/Libraries/Core/Conexion.php",
+		"/C/wamp64/www/tiendaVirtual/Assets/css/main.css",
+		"/C/wamp64/www/tiendaVirtual/Controllers/Roles.php",
+		"/D/Downloads/tienda_virtual12/tienda_virtual/Assets/js/functions_roles.js",
+		"/C/wamp64/www/tiendaVirtualSJ/Assets/js/functions_roles.js",
+		"/C/wamp64/www/tiendaVirtualSJ/Assets/js/main.js",
+		"/C/wamp64/www/tiendaVirtualSJ/Models/RolesModel.php",
+		"/C/wamp64/www/tiendaVirtual/Libraries/Core/Mysql.php",
+		"/C/wamp64/www/tiendaVirtual/Views/Template/Modals/modalsRoles.php",
+		"/C/wamp64/www/tiendaVirtual/Controllers/Home.php",
+		"/C/wamp64/www/tiendaVirtual/Assets/js/functions_admin.js",
+		"/C/wamp64/www/tiendaVirtual/1-Templates/vali-admin-master/docs/blank-page.html",
+		"/C/wamp64/www/tiendaVirtual/Views/Dashboard/nav_admin.php",
+		"/C/wamp64/www/tiendaVirtual/Views/Template/footer_admin .php",
+		"/C/wamp64/www/tiendaVirtual/Assets/css/main.min.css",
+		"/C/wamp64/www/tiendaVirtual/Models/DashboardModel.php",
+		"/C/wamp64/www/tiendaVirtualSJ/Libraries/Core/Controllers.php",
+		"/C/wamp64/www/tiendaVirtualSJ/Controllers/Dashboard.php",
+		"/C/wamp64/www/tiendaVirtualSJ/Models/DashboardModel.php",
+		"/C/wamp64/www/tienda_virtual/Libraries/Core/Controllers.php",
+		"/C/wamp64/www/tienda_virtual/Controllers/Home.php",
+		"/C/wamp64/www/tienda_virtual/Libraries/Core/Mysql.php",
+		"/C/Users/Usuario/OneDrive - SENA/Escritorio/tienda_virtual/Libraries/Core/Controllers.php",
+		"/C/wamp64/www/tiendaVirtual/Models/ErrorModel.php",
+		"/C/wamp64/www/tiendaVirtual/1-Templates/vali-master/docs/index.html",
+		"/C/wamp64/www/tiendaVirtual/Models/HomeModel.php",
+		"/C/wamp64/www/tiendaVirtual/index.php",
+		"/C/wamp64/www/tiendaVirtual/Views/Error/Errors.php"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "index.sublime-project",
+	"replace":
+	{
+		"height": 68.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 226.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
