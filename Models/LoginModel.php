@@ -1,11 +1,8 @@
-<?php 
+<?php
 
 class LoginModel extends Mysql
 {   
-        private $intIdUsuario;
-        private $strUsuario;
-        private $strPassword;
-        private $strToken;
+
 
     public function __construct()
     {
@@ -17,12 +14,7 @@ class LoginModel extends Mysql
         {
             $this->strUsuario = $usuario;
             $this->strPassword = $password;
-            echo $sql = "SELECT idpersona,status FROM persona WHERE 
-                    email_user = '$this->strUsuario' and 
-                    password = '$this->strPassword' and 
-                    status != 0 ";
 
-                    exit;
             $request = $this->select($sql);
             return $request;
         }

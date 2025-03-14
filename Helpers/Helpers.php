@@ -82,10 +82,6 @@
         return $pass;
     }
 
-
-
-    
-
     function token()
     {
         $r1 = bin2hex(random_bytes(10));
