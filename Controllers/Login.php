@@ -26,44 +26,24 @@ class Login extends Controllers
     }
 
     public function loginUser()
-{
-    if ($_POST) {
-        if (empty($_POST['txtEmail']) || empty($_POST['txtPassword'])) {
-            $arrResponse = ['status' => false, 'msg' => 'Error de datos'];
-        } else {
-            $strUsuario  = strtolower(strClean($_POST['txtEmail']));
-            $strPassword = trim($_POST['txtPassword']); // Asegurar que no sea null
-            var_dump($_POST['txtPassword']);
-die();
-            // Buscar usuario en la BD sin la contraseña
-            $requestUser = $this->model->loginUser($strUsuario, $strPassword);
-
-            if (isset($requestUser['error'])) {
-                $arrResponse = ['status' => false, 'msg' => $requestUser['error']];
-            } else {
-                if ($requestUser['status'] == 1) {
-                    $_SESSION['idUser'] = $requestUser['idpersona'];
-                    $_SESSION['login'] = true;
-
-                    // Cargar datos de sesión
-                    $arrData = $this->model->sessionLogin($_SESSION['idUser']);
-                    $_SESSION['userData'] = $arrData;
-
-                    $arrResponse = ['status' => true, 'msg' => 'ok'];
-                } else {
-                    $arrResponse = ['status' => false, 'msg' => 'Usuario inactivo.'];
+    {
+            //dep($_POST);
+            if($_POST){
+                if(empty($_POST['txtEmail']) || empty($_POST['txtPassword'])){
+                    $arrResponse = array('status' => false, 'msg' => 'Error de datos' );
+                }else{
+                    $strUsuario  =  strtolower(strClean($_POST['txtEmail']));
+                    $strPassword = hash("SHA256",$_POST['txtPassword']);
+                    $requestUser = $this->model->loginUser($strUsuario, $strPassword);
+                  dep($requestUser);
                 }
+                
             }
-        }
-        echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            die();
     }
-    die();
-}
 
+} 
 
-
-   
-
-   
-}
 ?>
+
+

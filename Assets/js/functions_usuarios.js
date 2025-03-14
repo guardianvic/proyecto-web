@@ -69,13 +69,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const strNombre = document.querySelector('#txtNombre').value.trim();
             const strApellido = document.querySelector('#txtApellido').value.trim();
             const strEmail = document.querySelector('#txtEmail').value.trim();
-            const intTelefono = document.querySelector('#txtTelefono').value.trim();
+            const strTelefono = document.querySelector('#txtTelefono').value.trim();
             const intTipousuario = document.querySelector('#listRolid').value.trim();
             const strPassword = document.querySelector('#txtPassword').value.trim();
             const intStatus = document.querySelector('#listStatus').value;
 
             if (strIdentificacion === '' || strNombre === '' || strApellido === '' ||
-                strEmail === '' || intTelefono === '' || intTipousuario === '') {
+                strEmail === '' || strTelefono === '' || intTipousuario === '') {
                 Swal.fire("Atención", "Todos los campos son obligatorios .", "error");
                 return false;
             }

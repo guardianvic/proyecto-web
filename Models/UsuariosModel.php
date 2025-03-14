@@ -6,7 +6,7 @@ class UsuariosModel extends Mysql
     private $strIdentificacion;
     private $strNombre;
     private $strApellido;
-    private $intTelefono;
+    private $strTelefono;
     private $strEmail;
     private $strPassword;
     private $strToken;
@@ -18,7 +18,6 @@ class UsuariosModel extends Mysql
         parent::__construct();
     }
 
-    // 🔹 Validar si el correo ya existe
     public function validarEmail(string $email): bool
     {
         $email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
@@ -28,12 +27,12 @@ class UsuariosModel extends Mysql
         return !empty($request);
     }
 
-    // 🔹 Insertar un nuevo usuario con contraseña hasheada
+    
     public function insertUsuario(
         string $identificacion, 
         string $nombre, 
         string $apellido, 
-        int $telefono, 
+        string $telefono, 
         string $email, 
         string $password, 
         int $tipoid, 
@@ -42,7 +41,7 @@ class UsuariosModel extends Mysql
         $this->strIdentificacion = htmlspecialchars($identificacion, ENT_QUOTES, 'UTF-8');
         $this->strNombre = ucwords(htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8'));
         $this->strApellido = ucwords(htmlspecialchars($apellido, ENT_QUOTES, 'UTF-8'));
-        $this->intTelefono = $telefono;
+        $this->strTelefono = htmlspecialchars($telefono, ENT_QUOTES, 'UTF-8');
         $this->strEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
         $this->intTipoId = $tipoid;
         $this->intStatus = $status;
@@ -56,7 +55,8 @@ class UsuariosModel extends Mysql
         $request = $this->select($sql, $arrParams);
 
         if (empty($request)) {
-            $hashPassword = empty($password) ? hash("SHA256", passGenerator()) : hash("SHA256", $password); // 🔹 Hashear contraseña con SHA256
+            $hashPassword = empty($password) ? hash("SHA256", passGenerator()) : hash("SHA256", $password); 
+
             $query_insert = "INSERT INTO persona(
                 identificacion, nombres, apellidos, telefono, email_user, password, rolid, status) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -64,7 +64,7 @@ class UsuariosModel extends Mysql
                 $this->strIdentificacion,
                 $this->strNombre,
                 $this->strApellido,
-                $this->intTelefono,
+                $this->strTelefono,
                 $this->strEmail,
                 $hashPassword,
                 $this->intTipoId,
@@ -76,7 +76,7 @@ class UsuariosModel extends Mysql
         }
     }
 
-    // 🔹 Obtener todos los usuarios
+   
     public function selectUsuarios()
     {
         $sql = "SELECT p.idpersona, p.identificacion, p.nombres, p.apellidos, p.telefono, p.email_user, p.status, r.idrol, r.nombrerol 
@@ -86,7 +86,7 @@ class UsuariosModel extends Mysql
         return $this->select_all($sql);
     }
 
-    // 🔹 Obtener un solo usuario por ID
+   
     public function selectUsuario(int $idpersona)
     {
         $sql = "SELECT p.idpersona, p.identificacion, p.nombres, p.apellidos, p.telefono, p.email_user, r.idrol, r.nombrerol, p.status, DATE_FORMAT(p.datecreated, '%d-%m-%Y') as fechaRegistro 
@@ -96,13 +96,13 @@ class UsuariosModel extends Mysql
         return $this->select($sql, [$idpersona]);
     }
 
-    // 🔹 Actualizar usuario (con contraseña opcional)
+    
     public function updateUsuario(
         int $idUsuario, 
         string $identificacion, 
         string $nombre, 
         string $apellido, 
-        int $telefono, 
+        string $telefono, 
         string $email, 
         string $password, 
         int $tipoid, 
@@ -116,7 +116,7 @@ class UsuariosModel extends Mysql
 
         if (empty($request)) {
             if (!empty($password)) {
-                $hashPassword = hash("SHA256", $password); // 🔹 Hashear nueva contraseña con SHA256
+                $hashPassword = hash("SHA256", $password); 
                 $sql = "UPDATE persona SET 
                         identificacion = ?, 
                         nombres = ?, 
@@ -167,7 +167,7 @@ class UsuariosModel extends Mysql
         }
     }
 
-    // 🔹 Eliminar usuario (desactivar)
+   
     public function deleteUsuario(int $intIdpersona)
     {
         $sql = "UPDATE persona SET status = 0 WHERE idpersona = ?";

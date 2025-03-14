@@ -66,22 +66,26 @@
         $string = str_ireplace("==","",$string);
         return $string;
     }
-    //Genera una contraseña de 10 caracteres
-	function passGenerator($length = 10)
+    
+
+	function passGenerator($length = 12)
     {
         $pass = "";
-        $longitudPass=$length;
-        $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-        $longitudCadena=strlen($cadena);
+        $longitudPass = $length;
+        $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+[]{}|;:,.<>?/";
+        $longitudCadena = strlen($cadena);
 
-        for($i=1; $i<=$longitudPass; $i++)
-        {
-            $pos = rand(0,$longitudCadena-1);
-            $pass .= substr($cadena,$pos,1);
-        }
+        for ($i = 1; $i <= $longitudPass; $i++) {
+         $pos = rand(0, $longitudCadena - 1);
+         $pass .= $cadena[$pos];
+    }
         return $pass;
     }
-    //Genera un token
+
+
+
+    
+
     function token()
     {
         $r1 = bin2hex(random_bytes(10));
@@ -91,7 +95,8 @@
         $token = $r1.'-'.$r2.'-'.$r3.'-'.$r4;
         return $token;
     }
-    //Formato para valores monetarios
+   
+
     function formatMoney($cantidad){
         $cantidad = number_format($cantidad,2,SPD,SPM);
         return $cantidad;

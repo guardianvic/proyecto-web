@@ -2,33 +2,30 @@
 
 class LoginModel extends Mysql
 {   
-    private $strUsuario;
+        private $intIdUsuario;
+        private $strUsuario;
+        private $strPassword;
+        private $strToken;
 
     public function __construct()
     {
         parent::__construct();
     }   
 
+
     public function loginUser(string $usuario, string $password)
-{
-    $this->strUsuario = $usuario;
+        {
+            $this->strUsuario = $usuario;
+            $this->strPassword = $password;
+            echo $sql = "SELECT idpersona,status FROM persona WHERE 
+                    email_user = '$this->strUsuario' and 
+                    password = '$this->strPassword' and 
+                    status != 0 ";
 
-    // Consulta con SQL preparado
-    $sql = "SELECT idpersona, password, status FROM persona WHERE email_user = ? AND status != 0";
-    $arrParams = array($this->strUsuario);
-    $request = $this->select($sql, $arrParams);
-
-    if (!empty($request) && isset($request['password'])) {
-        // Verificar la contraseña
-        if (password_verify((string)$password, $request['password'])) { // Forzar a string
-            return array("idpersona" => $request['idpersona'], "status" => $request['status']);
-        } else {
-            return array("error" => "Contraseña incorrecta");
+                    exit;
+            $request = $this->select($sql);
+            return $request;
         }
-    } else {
-        return array("error" => "Usuario no encontrado o inactivo");
-    }
-}
 
 }
 ?>

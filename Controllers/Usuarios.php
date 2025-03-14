@@ -26,78 +26,76 @@ class Usuarios extends Controllers
     }
 
     public function setUsuario()
-    {
-        try {
-            if ($_POST) {
-                if (
-                    empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) ||
-                    empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) ||
-                    empty($_POST['txtEmail']) || empty($_POST['listRolid']) ||
-                    empty($_POST['listStatus'])
-                ) {
-                    $this->jsonResponse(false, 'Datos incompletos.');
-                }
+{
+    if ($_POST) {
+        if (
+            empty($_POST['txtIdentificacion']) ||
+            empty($_POST['txtNombre']) ||
+            empty($_POST['txtApellido']) ||
+            empty($_POST['txtTelefono']) ||
+            empty($_POST['txtEmail']) ||
+            empty($_POST['listRolid']) ||
+            empty($_POST['listStatus'])
+        ) {
+            $arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
+        } else {
+            $idUsuario = intval($_POST['idUsuario']);
+            $strIdentificacion = strClean($_POST['txtIdentificacion']);
+            $strNombre = ucwords(strClean($_POST['txtNombre']));
+            $strApellido = ucwords(strClean($_POST['txtApellido']));
+            $strTelefono = intval(strClean($_POST['txtTelefono']));
+            $strEmail = strtolower(strClean($_POST['txtEmail']));
+            $intTipoId = intval(strClean($_POST['listRolid']));
+            $intStatus = intval(strClean($_POST['listStatus']));
+            $request_user = "";
 
-                $idUsuario = intval($_POST['idUsuario']);
-                $strIdentificacion = strClean($_POST['txtIdentificacion']);
-                $strNombre = ucwords(trim(strClean($_POST['txtNombre'])));
-                $strApellido = ucwords(trim(strClean($_POST['txtApellido'])));
-                $strEmail = strtolower(strClean($_POST['txtEmail']));
-                $intTelefono = intval(strClean($_POST['txtTelefono']));
-                $intTipoId = intval(strClean($_POST['listRolid']));
-                $intStatus = intval(strClean($_POST['listStatus']));
+            if ($idUsuario == 0) {
+                // Nuevo usuario
+                $option = 1;
                 $strPassword = empty($_POST['txtPassword']) ? hash("SHA256", passGenerator()) : hash("SHA256", $_POST['txtPassword']);
 
-                if ($idUsuario == 0) {
-                    // Nuevo usuario
-                    $request_user = $this->model->insertUsuario(
-                        $strIdentificacion,
-                        $strNombre,
-                        $strApellido,
-                        $intTelefono,
-                        $strEmail,
-                        $strPassword,
-                        $intTipoId,
-                        $intStatus
-                    );
-                } else {
-                    // Obtener la contraseña actual
-                    $usuarioExistente = $this->model->selectUsuario($idUsuario);
-                    if (empty($_POST['txtPassword'])) {
-                        $strPassword = $usuarioExistente['password']; // Mantener la misma contraseña si no se cambia
-                    } else {
-                        $strPassword = hash("SHA256", $_POST['txtPassword']); // Cifrar nueva contraseña
-                    }
+                $request_user = $this->model->insertUsuario(
+                    $strIdentificacion,
+                    $strNombre,
+                    $strApellido,
+                    $strTelefono,
+                    $strEmail,
+                    $strPassword,
+                    $intTipoId,
+                    $intStatus
+                );
 
-                    // Actualizar usuario
-                    $request_user = $this->model->updateUsuario(
-                        $idUsuario,
-                        $strIdentificacion,
-                        $strNombre,
-                        $strApellido,
-                        $intTelefono,
-                        $strEmail,
-                        $strPassword,
-                        $intTipoId,
-                        $intStatus
-                    );
-                }
+            } else {
+                // Actualización de usuario
+                $option = 2;
+                $strPassword = empty($_POST['txtPassword']) ? "" : hash("SHA256", $_POST['txtPassword']);
 
-                if ($request_user > 0) {
-                    $userData = $this->model->selectUsuario($idUsuario);
-                    $msg = $idUsuario == 0 ? 'Usuario creado correctamente.' : 'Usuario actualizado correctamente.';
-                    $this->jsonResponse(true, $msg, $userData);
-                } elseif ($request_user == 'exist') {
-                    $this->jsonResponse(false, 'El email o la identificación ya existe.');
-                } else {
-                    $this->jsonResponse(false, 'Error al guardar los datos.');
-                }
+                $request_user = $this->model->updateUsuario(
+                    $idUsuario,
+                    $strIdentificacion,
+                    $strNombre,
+                    $strApellido,
+                    $strTelefono,
+                    $strEmail,
+                    $strPassword,
+                    $intTipoId,
+                    $intStatus
+                );
             }
-        } catch (Exception $e) {
-            error_log("Error en setUsuario: " . $e->getMessage());
-            $this->jsonResponse(false, 'Ocurrió un error interno.');
+
+            if ($request_user > 0) {
+                $arrResponse = array('status' => true, 'msg' => ($option == 1) ? 'Datos guardados correctamente.' : 'Datos actualizados correctamente.');
+            } elseif ($request_user == 'exist') {
+                $arrResponse = array('status' => false, 'msg' => '¡Atención! El email o la identificación ya existe, ingrese otro.');
+            } else {
+                $arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
+            }
         }
+        echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
     }
+    die();
+}
+
 
     public function getUsuarios()
     {
@@ -157,3 +155,5 @@ class Usuarios extends Controllers
     }
 }
 ?>
+
+
